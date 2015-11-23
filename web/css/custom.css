@@ -1,0 +1,11 @@
+.jumbotron{
+    color:#fff;
+    height:400px;
+    background-image: url(../images/jumbotron_background.jpg);
+    background-position: center;
+    text-align:center;
+}
+footer{
+    color:#fff;
+    text-align: center;
+}

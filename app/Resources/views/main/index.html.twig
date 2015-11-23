@@ -1,0 +1,24 @@
+{% extends "main/layout.html.twig" %}
+{% block content %}
+<div class="container">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title">Nowości</h3>
+</div>
+<div class="panel-body">
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title">Promocje</h3>
+</div>
+<div class="panel-body">
+</div>
+</div>
+</div>
+{% endblock %}
+{% block javascripts %}
+{{parent()}}
+<script src="{{ asset('js/jquery_custom_index.js') }}"></script>
+{% endblock %}
+
