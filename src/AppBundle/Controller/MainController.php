@@ -67,11 +67,4 @@ class MainController extends Controller
 	{
 		return $this->render('main/about.html.twig');
 	}
-	/**
-	 * @Route("/login", name="login")
-	 */
-	public function loginAction()
-	{
-		return $this->render('main/login.html.twig');
-	}
 }
