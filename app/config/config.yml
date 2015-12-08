@@ -85,5 +85,26 @@ fos_user:
     user_class: AppBundle\Entity\User
 
 easy_admin:
+    site_name: 'Panel administratora'
     entities:
-        - AppBundle\Entity\User
+      User:
+        label: 'klienci'
+        class: AppBundle\Entity\User
+        list:
+          title: 'Konta klientów'
+          fields: ['id', 'userName', 'firstName', 'lastName', 'email']
+      Order:
+        label: 'zamówienia'
+        class: AppBundle\Entity\Order
+        list:
+          title: 'Niezrealizowane zamówienia'
+      category:
+        label: 'kategorie produktów'
+        class: AppBundle\Entity\Category
+        list:
+             title: 'kategorie produktów'
+      Product:
+        label: 'dostępne produkty'
+        class: AppBundle\Entity\Product
+        list:
+            title: 'dostępne produkty'
