@@ -84,27 +84,75 @@ fos_user:
     firewall_name: main
     user_class: AppBundle\Entity\User
 
+
 easy_admin:
     site_name: 'Panel administratora'
+    design:
+            color_scheme: 'light'
     entities:
       User:
         label: 'klienci'
         class: AppBundle\Entity\User
+        disabled_actions: ['new']
         list:
           title: 'Konta klientów'
-          fields: ['id', 'userName', 'firstName', 'lastName', 'email']
+          fields:
+                          - 'id'
+                          - { property: 'userName', label: 'nazwa użytkownika' }
+                          - { property: 'firstName', label: 'imię' }
+                          - { property: 'lastName', label: 'nazwisko' }
+                          - { property: 'email', label: 'adres email' }
+          actions:
+                          - { name: 'edit', label: 'modyfikuj' }
+                          - { name: 'show', label: 'pokaż szczegóły' }
+                          - { name: 'search', label: 'wyszukaj' }
+
       Order:
         label: 'zamówienia'
-        class: AppBundle\Entity\Order
+        class: AppBundle\Entity\Orders
         list:
           title: 'Niezrealizowane zamówienia'
+          fields:
+                          - 'id'
+                          - { property: 'Products', label: 'zamówione produkty' }
+                          - { property: 'isPaid', label: 'czy zapłacono', type: 'boolean' }
+                          - { property: 'isSent', label: 'czy wysłano', type: 'boolean' }
+                          - { property: 'isFinished', label: 'czy zakończono zamówienie', type: 'boolean' }
+                          - { property: 'Total cost', label: 'Całkowity koszt zamówienia' }
+          actions:
+                          - { name: 'new', label: 'nowe zamówienie' }
+                          - { name: 'edit', label: 'modyfikuj' }
+                          - { name: 'show', label: 'pokaż szczegóły' }
+                          - { name: 'search', label: 'wyszukaj' }
+
       category:
         label: 'kategorie produktów'
         class: AppBundle\Entity\Category
         list:
              title: 'kategorie produktów'
+             fields:
+                           - 'id'
+                           - { property: 'Name', label: 'nazwa kategorii' }
+             actions:
+                           - { name: 'new', label: 'nowa kategoria' }
+                           - { name: 'edit', label: 'modyfikuj' }
+                           - { name: 'show', label: 'pokaż szczegóły' }
+                           - { name: 'search', label: 'wyszukaj' }
+
       Product:
         label: 'dostępne produkty'
         class: AppBundle\Entity\Product
         list:
             title: 'dostępne produkty'
+            fields:
+                           - 'id'
+                           - { property: 'Name', label: 'nazwa produktu' }
+                           - { property: 'Price', label: 'cena', type: 'boolean' }
+                           - { property: 'Quantity', label: 'ilość dostępnych sztuk'}
+                           - { property: 'Description', label: 'opis produktu' }
+                           - { property: 'Category', label: 'kategoria produktu' }
+            actions:
+                            - { name: 'new', label: 'nowy produkt' }
+                            - { name: 'edit', label: 'modyfikuj' }
+                            - { name: 'show', label: 'pokaż szczegóły' }
+                            - { name: 'search', label: 'wyszukaj' }

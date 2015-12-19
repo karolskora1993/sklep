@@ -3,12 +3,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Category
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="AppBundle\Entity\CategoryRepository")
+ * @ORM\Entity
  */
 class Category
 {
@@ -32,7 +33,7 @@ class Category
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    public $name;
 
 
     public function __construct()

@@ -13,58 +13,36 @@ class MainController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
+		$user=$this->getUser();
         return $this->render('main/index.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
+				'user'=>$user,
+				 'categories'=>$categories
         ));
     }
-	/**
-	 * @Route("/bikes/{page}", name="bikes", defaults={"page" = 1})
-	 */
-	public function bikesAction($page)
-	{
-		return $this->render('main/bikes.html.twig', array('pageNumber'=>$page));
-	}
-	/**
-	 * @Route("/handlebars/{page}", name="handlebars", defaults={"page" = 1})
-	 */
-	public function handlebarsAction($page)
-	{
-		return $this->render('main/handlebars.html.twig', array('pageNumber'=>$page));
-	}
-    /**
-     * @Route("/wheels/{page}", name="wheels", defaults={"page" = 1})
-     */
-    public function wheelsAction($page)
-    {
-        return $this->render('main/wheels.html.twig', array('pageNumber'=>$page));
-    }
-    /**
-     * @Route("/frames/{page}", name="frames", defaults={"page" = 1})
-     */
-    public function framesAction($page)
-    {
-        return $this->render('main/frames.html.twig', array('pageNumber'=>$page));
-    }
-    /**
-     * @Route("/saddles/{page}", name="saddles", defaults={"page" = 1})
-     */
-    public function saddlesAction($page)
-    {
-        return $this->render('main/saddles.html.twig', array('pageNumber'=>$page));
-    }
-	/**
-	 * @Route("/clothes/{page}", name="clothes", defaults={"page" = 1})
-	 */
-	public function clothesAction($page)
-	{
-		return $this->render('main/clothes.html.twig', array('pageNumber'=>$page));
-	}
 	/**
 	 * @Route("/about", name="about")
 	 */
 	public function aboutAction()
 	{
-		return $this->render('main/about.html.twig');
+		$user=$this->getUser();
+		return $this->render('main/about.html.twig', array('user'=>$user));
+	}
+	/**
+	 * @Route("/basket", name="basket")
+	 */
+	public function basketAction()
+	{
+		$user=$this->getUser();
+		return $this->render('main/about.html.twig', array('user'=>$user));
+	}
+	/**
+	 * @Route("/checkout", name="checkout")
+	 */
+	public function checkoutAction()
+	{
+		$user=$this->getUser();
+		return $this->render('main/about.html.twig', array('user'=>$user));
 	}
 }
