@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\AllValidator;
 
 class MainController extends Controller
 {
@@ -27,7 +28,18 @@ class MainController extends Controller
 	public function aboutAction()
 	{
 		$user=$this->getUser();
-		return $this->render('main/about.html.twig', array('user'=>$user));
+		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
+		return $this->render('main/about.html.twig', array('user'=>$user, 'categories'=>$categories));
+	}
+	/**
+	 * @Route("/shop/{category}")
+	 */
+	public function shopAction($category)
+	{
+		$user=$this->getUser();
+		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
+		$products=$this->getDoctrine()->getRepository('AppBundle:Product')->findBy(array('category' => $category));
+		return $this->render('main/shop.html.twig', array('user'=>$user,'categories'=>$categories, 'category'=>$category, 'products'=>$products));
 	}
 	/**
 	 * @Route("/basket", name="basket")
@@ -35,7 +47,8 @@ class MainController extends Controller
 	public function basketAction()
 	{
 		$user=$this->getUser();
-		return $this->render('main/about.html.twig', array('user'=>$user));
+		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
+		return $this->render('main/about.html.twig', array('user'=>$user, 'categories'=>$categories));
 	}
 	/**
 	 * @Route("/checkout", name="checkout")
@@ -43,6 +56,7 @@ class MainController extends Controller
 	public function checkoutAction()
 	{
 		$user=$this->getUser();
-		return $this->render('main/about.html.twig', array('user'=>$user));
+		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
+		return $this->render('main/about.html.twig', array('user'=>$user, 'categories'=>$categories));
 	}
 }
