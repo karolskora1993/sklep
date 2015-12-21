@@ -38,8 +38,20 @@ class MainController extends Controller
 	{
 		$user=$this->getUser();
 		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
-		$products=$this->getDoctrine()->getRepository('AppBundle:Product')->findBy(array('category' => $category));
+		$products=$this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
+
 		return $this->render('main/shop.html.twig', array('user'=>$user,'categories'=>$categories, 'category'=>$category, 'products'=>$products));
+	}
+	/**
+	 * @Route("/shop/{category}/{product}")
+	 */
+	public function shopDetailAction($category, $product)
+	{
+		$user=$this->getUser();
+		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
+		$products=$this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
+
+		return $this->render('main/shop.html.twig', array('user'=>$user,'categories'=>$categories, 'category'=>$product, 'products'=>$products));
 	}
 	/**
 	 * @Route("/basket", name="basket")

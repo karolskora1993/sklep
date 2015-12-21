@@ -147,7 +147,7 @@ easy_admin:
             fields:
                            - 'id'
                            - { property: 'Name', label: 'nazwa produktu' }
-                           - { property: 'Price', label: 'cena', type: 'boolean' }
+                           - { property: 'Price', label: 'cena' }
                            - { property: 'Quantity', label: 'ilość dostępnych sztuk'}
                            - { property: 'Description', label: 'opis produktu' }
                            - { property: 'Category', label: 'kategoria produktu' }
