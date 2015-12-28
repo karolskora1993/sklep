@@ -93,7 +93,7 @@ easy_admin:
       User:
         label: 'klienci'
         class: AppBundle\Entity\User
-        disabled_actions: ['new']
+        disabled_actions: ['new','edit']
         list:
           title: 'Konta klientów'
           fields:
@@ -103,7 +103,6 @@ easy_admin:
                           - { property: 'lastName', label: 'nazwisko' }
                           - { property: 'email', label: 'adres email' }
           actions:
-                          - { name: 'edit', label: 'modyfikuj' }
                           - { name: 'show', label: 'pokaż szczegóły' }
                           - { name: 'search', label: 'wyszukaj' }
 
@@ -111,13 +110,12 @@ easy_admin:
         label: 'zamówienia'
         class: AppBundle\Entity\Orders
         list:
-          title: 'Niezrealizowane zamówienia'
+          title: 'zamówienia'
           fields:
                           - 'id'
                           - { property: 'Products', label: 'zamówione produkty' }
                           - { property: 'isPaid', label: 'czy zapłacono', type: 'boolean' }
                           - { property: 'isSent', label: 'czy wysłano', type: 'boolean' }
-                          - { property: 'isFinished', label: 'czy zakończono zamówienie', type: 'boolean' }
                           - { property: 'Total cost', label: 'Całkowity koszt zamówienia' }
           actions:
                           - { name: 'new', label: 'nowe zamówienie' }

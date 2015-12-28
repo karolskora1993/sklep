@@ -39,8 +39,14 @@ class MainController extends Controller
 		$user=$this->getUser();
 		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
 		$products=$this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
+		$prod=[];
+		for($i=0; $i<sizeof($products);$i++)
+		{
+		if($products[$i]->getCategory() == $category)
+			$prod[$i]=$products[$i];
+	}
 
-		return $this->render('main/shop.html.twig', array('user'=>$user,'categories'=>$categories, 'category'=>$category, 'products'=>$products));
+		return $this->render('main/shop.html.twig', array('user'=>$user,'categories'=>$categories, 'category'=>$category, 'products'=>$prod));
 	}
 	/**
 	 * @Route("/shop/{category}/{product}")

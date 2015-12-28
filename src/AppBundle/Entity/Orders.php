@@ -41,12 +41,6 @@ class Orders
      */
     private $isSent;
 
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="isFinished", type="boolean")
-     */
-    private $isFinished;
 
     /**
      * @var string
