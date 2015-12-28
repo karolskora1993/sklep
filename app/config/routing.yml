@@ -10,3 +10,7 @@ easy_admin_bundle:
     resource: "@EasyAdminBundle/Controller/"
     type:     annotation
     prefix:   /admin
+
+sylius_cart:
+    resource: @SyliusCartBundle/Resources/config/routing.yml
+    prefix: /cart

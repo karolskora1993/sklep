@@ -154,3 +154,17 @@ easy_admin:
                             - { name: 'edit', label: 'modyfikuj' }
                             - { name: 'show', label: 'pokaż szczegóły' }
                             - { name: 'search', label: 'wyszukaj' }
+
+sylius_cart:
+    resolver: app.cart_item_resolver # The id of our newly created service.
+    classes: ~ # This key can be empty but it must be present in the configuration.
+
+sylius_order:
+    driver: doctrine/orm # Configure the doctrine orm driver used in documentation.
+    classes:
+        order:
+            model: AppBundle\Entity\Orders # If you have created a custom Cart entity.
+        order_item:
+            model: AppBundle\Entity\CartItem # If you have created a custom CartItem entity.
+
+sylius_money: ~
