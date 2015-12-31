@@ -1,7 +1,6 @@
 <?php
 
 namespace AppBundle\Entity;
-use Sylius\Component\Cart\Model\Cart as BaseCart;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,8 +9,17 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity
  */
-class Orders extends BaseCart
+class Orders
 {
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
     /**
      * @var array
      *

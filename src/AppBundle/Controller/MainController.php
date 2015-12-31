@@ -49,15 +49,15 @@ class MainController extends Controller
 		return $this->render('main/shop.html.twig', array('user'=>$user,'categories'=>$categories, 'category'=>$category, 'products'=>$prod));
 	}
 	/**
-	 * @Route("/shop/{category}/{product}")
+	 * @Route("/shop/{category}/{id}")
 	 */
-	public function shopDetailAction($category, $product)
+	public function shopDetailAction($category, $id)
 	{
 		$user=$this->getUser();
 		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
-		$products=$this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
+		$product=$this->getDoctrine()->getRepository('AppBundle:Product')->find($id);
 
-		return $this->render('main/shop.html.twig', array('user'=>$user,'categories'=>$categories, 'category'=>$product, 'products'=>$products));
+		return $this->render('main/details.html.twig', array('user'=>$user,'categories'=>$categories, 'product'=>$product));
 	}
 	/**
 	 * @Route("/basket", name="basket")

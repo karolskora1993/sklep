@@ -1,0 +1,45 @@
+{% extends "main/layout.html.twig" %}
+{% set categories = categories %}
+{% block content %}
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ product.name }}</h3>
+            </div>
+            <div class="panel-body">
+               <div class="row">
+                   <div class="col-lg-4">
+                       <div class="thumbnail">
+                           <img src="{{ asset('images/shop/' ~ product.imgSrc ~ '.jpg' ) }}" alt="...">
+                       </div>
+                   </div>
+                   <div class="col-lg-8">
+                       <div class="row">
+                           <div class="col-lg-12">nazwa produktu: {{ product.name }}</div>
+                       </div>
+                       <div class="row">
+                           <div class="col-lg-12">ilość dostępnych sztuk: {{ product.quantity }}</div>
+                       </div>
+                       <div class="row">
+                           <div class="col-lg-12">cena:{{ product.price }} zł</div>
+                       </div>
+                       <div class="row">
+                           <div class="col-lg-12">
+                               <a class="btn btn-default" href="{{ path('sylius_cart_item_add', {'productId': product.id}) }}" role="button">dodaj do koszyka</a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{ product.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('js/jquery_custom.js') }}"></script>
+{% endblock %}
