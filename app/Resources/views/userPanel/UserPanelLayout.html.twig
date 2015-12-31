@@ -1,0 +1,30 @@
+{% extends "layout.html.twig" %}
+{% set categories = categories %}
+{% block content %}
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Panel Użytkownika {{ user.firstName }} {{ user.lastName }}</h3>
+        </div>
+        <br>
+       <div class="row">
+           <div class="container">
+               <ul class="nav nav-pills nav-justified">
+                   <li role="presentation" class="active"><a href="#">informacje o koncie</a></li>
+                   <li role="presentation"><a href="#">zmień adres</a></li>
+                   <li role="presentation"><a href="#">zmień hasło</a></li>
+                   <li role="presentation"><a href="#">zmień email</a></li>
+                   <li role="presentation"><a href="#">historia zamówień</a></li>
+               </ul>
+           </div>
+           {% block userPanelContent %}
+           {%endblock%}
+       </div>
+        <br>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+{{parent()}}
+<script src="{{ asset('js/jquery_custom.js') }}"></script>
+{% endblock %}

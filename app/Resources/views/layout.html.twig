@@ -39,9 +39,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">konto<span class="caret"></span></a>
           <ul class="dropdown-menu">
           {% if user!=null %}
-            <li><a href="/">zarządzaj kontem</a></li>
+            <li><a href="{{ path('userPanel') }}">zarządzaj kontem</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="{{ path('basket') }}">koszyk</a></li>
+            <li><a href="{{ path('cart') }}">koszyk</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="{{ path('checkout') }}">zamów</a></li>
             <li role="separator" class="divider"></li>

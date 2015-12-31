@@ -16,10 +16,28 @@ class MainController extends Controller
     {
 		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
 		$user=$this->getUser();
+        $products=$this->getDoctrine()->getRepository('AppBundle:Product')->findAll();
+        $newProducts=[];
+        for($i=0; $i<sizeof($products);$i++)
+        {
+            if($products[$i]->isNew() == true)
+                $newProducts[$i]=$products[$i];
+        }
+
+        $sale=[];
+
+        for($i=0; $i<sizeof($products);$i++)
+        {
+            if($products[$i]->isSale() == true)
+                $sale[$i]=$products[$i];
+        }
+
         return $this->render('main/index.html.twig', array(
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
 				'user'=>$user,
-				 'categories'=>$categories
+                'categories'=>$categories,
+                'newProducts'=>$newProducts,
+                'sale'=>$sale
         ));
     }
 	/**
@@ -60,13 +78,13 @@ class MainController extends Controller
 		return $this->render('main/details.html.twig', array('user'=>$user,'categories'=>$categories, 'product'=>$product));
 	}
 	/**
-	 * @Route("/basket", name="basket")
+	 * @Route("/cart", name="cart")
 	 */
 	public function basketAction()
 	{
 		$user=$this->getUser();
 		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
-		return $this->render('main/about.html.twig', array('user'=>$user, 'categories'=>$categories));
+		return $this->render('@SyliusCart/Cart/summary.html.twig', array('user'=>$user, 'categories'=>$categories));
 	}
 	/**
 	 * @Route("/checkout", name="checkout")
@@ -76,5 +94,13 @@ class MainController extends Controller
 		$user=$this->getUser();
 		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
 		return $this->render('main/about.html.twig', array('user'=>$user, 'categories'=>$categories));
+	}
+	/**
+	 * @Route("/userPanel", name="userPanel")
+	 */
+	public function userPanelAction(){
+
+		return $this->forward('AppBundle:UserPanel:userPanel');
+
 	}
 }

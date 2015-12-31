@@ -60,7 +60,77 @@ class Product
      *
      * @ORM\Column(name="img_src", type="string", length=255)
      */
+
     private $imgSrc;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="new", type="boolean")
+     */
+    private $new;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="sale", type="boolean")
+     */
+    private $sale;
+
+    /**
+     * @return boolean
+     */
+    public function isNew()
+    {
+        return $this->new;
+    }
+
+    /**
+     * @param boolean $isNew
+     */
+    public function setNew($isNew)
+    {
+        $this->new = $isNew;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isSale()
+    {
+        return $this->sale;
+    }
+
+    /**
+     * @param boolean $sale
+     */
+    public function setSale($sale)
+    {
+        $this->sale = $sale;
+    }
+
+    /**
+     * @return float
+     */
+    public function getNewPrice()
+    {
+        return $this->newPrice;
+    }
+
+    /**
+     * @param float $newPrice
+     */
+    public function setNewPrice($newPrice)
+    {
+        $this->newPrice = $newPrice;
+    }
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="newPrice", type="float")
+     */
+    private $newPrice;
 
     /**
      * @return mixed
