@@ -10,7 +10,7 @@
     {%  for product in newProducts %}
         <div class="col-sm-4 col-md-3">
             <div class="thumbnail">
-                <img src="{{ asset('images/shop/' ~ product.imgSrc ~ '.jpg' ) }}" alt="...">
+                <img src="{{ asset('images/shop/' ~ product.imgSrc   ) }}" alt="...">
                 <div class="caption">
                     <h5>{{ product.name }}</h5>
                     <p>cena :{{ product.price }} zł</p>
@@ -29,7 +29,7 @@
     {%  for product in sale %}
         <div class="col-sm-4 col-md-3">
             <div class="thumbnail">
-                <img src="{{ asset('images/shop/' ~ product.imgSrc ~ '.jpeg' ) }}" alt="...">
+                <img src="{{ asset('images/shop/' ~ product.imgSrc  ) }}" alt="...">
                 <div class="caption">
                     <h5>{{ product.name }}</h5>
                     <p>cena :<s>{{ product.price }} zł </s>  {{ product.newPrice }} zł</p>

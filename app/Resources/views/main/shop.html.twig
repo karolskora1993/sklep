@@ -10,7 +10,7 @@
     {% for product in products %}
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <img src="{{ asset('images/shop/' ~ product.imgSrc ~ '.jpg' ) }}" alt="...">
+                    <img src="{{ asset('images/shop/' ~ product.imgSrc  ) }}" alt="...">
                     <div class="caption">
                         <h3>{{ product.name }}</h3>
                         <p>cena :{{ product.price }} zł</p>

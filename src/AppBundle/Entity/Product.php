@@ -19,6 +19,11 @@ class Product
     protected $category;
 
     /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="product")
+     */
+    protected $comments;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -107,6 +112,22 @@ class Product
     public function setSale($sale)
     {
         $this->sale = $sale;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param mixed $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
     }
 
     /**
@@ -277,6 +298,11 @@ class Product
     public function getImgSrc()
     {
         return $this->imgSrc;
+    }
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
     }
 
 }
