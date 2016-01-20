@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class UserPanelController extends Controller
@@ -37,7 +38,7 @@ class UserPanelController extends Controller
     /**
      * @Route("/changeAdress", name="changeAdress")
      */
-    public function changeAdressAction(){
+    public function changeAdressAction(Request $request){
         $user=$this->getUser();
         $categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
 
@@ -61,6 +62,8 @@ class UserPanelController extends Controller
                 'attr'=>array('class'=>'form-control')))
             ->getForm();
 
+        $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
 
@@ -72,7 +75,7 @@ class UserPanelController extends Controller
     /**
      * @Route("/changeEmail", name="changeEmail")
      */
-    public function changeEmailAction(){
+    public function changeEmailAction(Request $request){
         $user=$this->getUser();
         $categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
 
@@ -85,6 +88,8 @@ class UserPanelController extends Controller
                 'label' => 'zapisz',
                 'attr'=>array('class'=>'form-control')))
             ->getForm();
+
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();

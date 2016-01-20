@@ -107,24 +107,7 @@ class MainController extends Controller
 
 			return $this->render('main/details.html.twig', array('user'=>$user,'categories'=>$categories, 'product'=>$product, 'form'=>$form->createView(), 'comments'=>$comments));
 	}
-	/**
-	 * @Route("/cart", name="cart")
-	 */
-	public function basketAction()
-	{
-		$user=$this->getUser();
-		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
-		return $this->render('@SyliusCart/Cart/summary.html.twig', array('user'=>$user, 'categories'=>$categories));
-	}
-	/**
-	 * @Route("/checkout", name="checkout")
-	 */
-	public function checkoutAction()
-	{
-		$user=$this->getUser();
-		$categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
-		return $this->render('main/about.html.twig', array('user'=>$user, 'categories'=>$categories));
-	}
+
 	/**
 	 * @Route("/userPanel", name="userPanel")
 	 */
@@ -133,4 +116,5 @@ class MainController extends Controller
 		return $this->forward('AppBundle:UserPanel:userPanel');
 
 	}
+
 }

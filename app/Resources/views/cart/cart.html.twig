@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+{% set categories = categories %}
+{% block content %}
+    <div class="container">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h3 class="panel-title">koszyk</h3>
+</div>
+<div class="panel-body">
+    <table class="table">
+        <tr>
+            <td>NAZWA PRODUKTU</td>
+            <td>CENA</td>
+        </tr>
+        {% for item in products %}
+            <tr>
+                <td>{{ item.name}}</td>
+                <td>{{ item.price }} zł</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>RAZEM</td>
+            <td>
+                {{ sum }}
+            </td>
+        </tr>
+    </table>
+    <a class="btn btn-default" href="{{ path('order') }}" role="button">ZAMÓW</a>
+</div>
+</div>
+</div>
+{% endblock %}
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{ asset('js/jquery_custom.js') }}"></script>
+{% endblock %}
