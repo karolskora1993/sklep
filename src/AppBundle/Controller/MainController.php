@@ -82,9 +82,15 @@ class MainController extends Controller
 		$comment=new Comment();
 
 		$form = $this->createFormBuilder($comment)
-				->add('author', 'text')
-				->add('text', 'text')
-				->add('save', 'submit', array('label' => 'napisz komentarz'))
+				->add('author', 'text', array(
+						'label' => 'autor',
+						'attr'=>array('class'=>'form-control')))
+				->add('text', 'text', array(
+						'label' => 'treść',
+						'attr'=>array('class'=>'form-control')))
+				->add('save', 'submit', array(
+						'label' => 'napisz komentarz',
+						'attr'=>array('class'=>'form-control')))
 				->getForm();
 
 		$form->handleRequest($request);

@@ -10,11 +10,11 @@
        <div class="row">
            <div class="container">
                <ul class="nav nav-pills nav-justified">
-                   <li role="presentation" class="active"><a href="#">informacje o koncie</a></li>
-                   <li role="presentation"><a href="#">zmień adres</a></li>
-                   <li role="presentation"><a href="#">zmień hasło</a></li>
-                   <li role="presentation"><a href="#">zmień email</a></li>
-                   <li role="presentation"><a href="#">historia zamówień</a></li>
+                   <li role="presentation"><a href="{{ path('aboutUser') }}">informacje o koncie</a></li>
+                   <li role="presentation"><a href="{{ path('changeAdress') }}">zmień adres</a></li>
+                   <li role="presentation"><a href="{{ path('fos_user_change_password') }}">zmień hasło</a></li>
+                   <li role="presentation"><a href="{{ path('changeEmail') }}">zmień email</a></li>
+                   <li role="presentation"><a href= "{{ path('history') }}">historia zamówień</a></li>
                </ul>
            </div>
            {% block userPanelContent %}
