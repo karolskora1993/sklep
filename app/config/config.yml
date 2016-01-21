@@ -113,8 +113,7 @@ easy_admin:
           title: 'zamówienia'
           fields:
                           - 'id'
-                          - { property: 'Products', label: 'zamówione produkty' }
-                          - { property: 'isPaid', label: 'czy zapłacono', type: 'boolean' }
+                          - { property: 'user', label: 'klient' }
                           - { property: 'isSent', label: 'czy wysłano', type: 'boolean' }
                           - { property: 'Total cost', label: 'Całkowity koszt zamówienia' }
           actions:

@@ -105,6 +105,16 @@ class UserPanelController extends Controller
     public function showHistoryAction(){
         $user=$this->getUser();
         $categories=$this->getDoctrine()->getRepository('AppBundle:Category')->findAll();
-        return $this->render('userPanel/history.html.twig', array('user'=>$user, 'categories'=>$categories));
+        $orders=$this->getDoctrine()->getRepository('AppBundle:Orders')->findAll();
+
+        $userOrders=[];
+
+        for($i=0; $i<sizeof($orders);$i++)
+        {
+            if($orders[$i]->getUser() == $user)
+                $userOrders[$i]=$orders[$i];
+        }
+
+        return $this->render('userPanel/history.html.twig', array('user'=>$user, 'categories'=>$categories, 'orders'=>$orders));
     }
 }

@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
@@ -57,6 +58,27 @@ class User extends BaseUser
      * @ORM\Column(name="phone_number", type="integer")
      */
     private $phoneNumber;
+
+    /**
+     * @return mixed
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * @param mixed $orders
+     */
+    public function setOrders($orders)
+    {
+        $this->orders = $orders;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="Orders", mappedBy="user")
+     */
+    protected $orders;
 
 
     /**
@@ -183,6 +205,11 @@ class User extends BaseUser
     public function setFirstName($firstName)
     {
         $this->firstName = $firstName;
+    }
+
+    public function __construct()
+    {
+        $this->orders = new ArrayCollection();
     }
 
 

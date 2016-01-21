@@ -21,17 +21,50 @@ class Orders
     private $id;
 
     /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="orders")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * @return boolean
+     */
+    public function isIsSent()
+    {
+        return $this->isSent;
+    }
+
+    /**
+     * @param boolean $isSent
+     */
+    public function setIsSent($isSent)
+    {
+        $this->isSent = $isSent;
+    }
+
+    /**
      * @var array
      *
      * @ORM\Column(name="products", type="array")
      */
     protected $products;
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="isPaid", type="boolean")
-     */
-    private $isPaid;
+
 
     /**
      * @var boolean
@@ -59,29 +92,6 @@ class Orders
         return $this->id;
     }
 
-    /**
-     * Set isPaid
-     *
-     * @param boolean $isPaid
-     *
-     * @return Orders
-     */
-    public function setIsPaid($isPaid)
-    {
-        $this->isPaid = $isPaid;
-
-        return $this;
-    }
-
-    /**
-     * Get isPaid
-     *
-     * @return boolean
-     */
-    public function getIsPaid()
-    {
-        return $this->isPaid;
-    }
 
     /**
      * @return array
@@ -99,53 +109,6 @@ class Orders
         $this->products = $products;
     }
 
-    /**
-     * Set isSent
-     *
-     * @param boolean $isSent
-     *
-     * @return Orders
-     */
-    public function setIsSent($isSent)
-    {
-        $this->isSent = $isSent;
-
-        return $this;
-    }
-
-    /**
-     * Get isSent
-     *
-     * @return boolean
-     */
-    public function getIsSent()
-    {
-        return $this->isSent;
-    }
-
-    /**
-     * Set isFinished
-     *
-     * @param boolean $isFinished
-     *
-     * @return Orders
-     */
-    public function setIsFinished($isFinished)
-    {
-        $this->isFinished = $isFinished;
-
-        return $this;
-    }
-
-    /**
-     * Get isFinished
-     *
-     * @return boolean
-     */
-    public function getIsFinished()
-    {
-        return $this->isFinished;
-    }
 
     /**
      * Set totalCost

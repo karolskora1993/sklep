@@ -3,30 +3,36 @@
 {% block userPanelContent %}
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Informacje o użytkowniku</div>
+                    <div class="panel-heading">Historia zamówień</div>
                     <div class="panel-body">
-                        <div class="row">nazwa użytkownika:{{ user.username }}</div>
-                        <div class="row">imie: {{ user.firstName }}</div>
-                        <div class="row">nazwisko: {{ user.lastName }}</div>
-                        <div class="row">adres email: {{ user.email }}</div>
-                        <div class="row">numer telefonu: {{ user.phoneNumber }}</div>
+                    <table class="table">
+        <tr>
+            <td>PRODUKTY</td>
+            <td>CENA</td>
+        </tr>
+        {% for order in orders %}
+            <tr>
+                <td>
+                <table class="table">
+                {% for  product in order.getProducts() %}
+                <tr>
+                <td>{{ product.getName() }}</td>
+</tr>
+                {% endfor %}
+</table>
+</td>
+                <td>{{ order.totalCost }} zł</td>
+            </tr>
+        {% endfor %}
+    </table>
 
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Adres</div>
-                    <div class="panel-body">
-                        <div class="row">ulica: {{ user.street }}</div>
-                        <div class="row">numer: {{ user.number }}</div>
-                        <div class="row">miasto: {{ user.city }}</div>
-                        <div class="row">kod kocztowy: {{ user.zipCode }}</div>
-                    </div>
-                </div>
-            </div>
+
         </div>
+    </div>
     </div>
 {% endblock %}
